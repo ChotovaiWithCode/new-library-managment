@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DEF Library</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    @keyframes pulse-scale {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+    .animate-pulse-scale {
+      animation: pulse-scale 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-blue-50 font-sans text-blue-900">
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <!-- Mobile Header -->
+    <header class="md:hidden bg-white p-4 flex items-center justify-between border-b">
+      <h1 class="text-xl font-semibold">DEF Library</h1>
+      <button id="menuToggle" class="w-8 h-8  rounded">
+        <i class='bx bxs-book-reader text-4xl'></i>
+      </button>
+    </header>
+
+  <!-- Slide-in Sidebar (Mobile) -->
+  <div id="mobileSidebar" class="fixed top-0 right-0 h-full w-20 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden overflow-y-auto">
+    <div class="p-2 flex flex-col items-center space-y-6 mt-10">
+      <i class='bx bxs-book-reader text-4xl'></i>
+      <i class='bx bx-share-alt text-4xl'></i>
+      <span class="text-sm font-medium">Dashboard</span>
+      <i class='bx bxs-book text-4xl'></i>
+      <span class="text-sm font-medium">Borrow</span>
+      <i class='bx bx-group text-4xl'></i>
+      <span class="text-sm font-medium">Member</span>
+      <i class='bx bx-book-open text-4xl'></i>
+      <span class="text-sm font-medium">Resources</span>
+      <i class='bx bx-cog text-4xl'></i>
+      <span class="text-sm font-medium">Settings</span>
+      <i class='bx bx-log-out text-4xl'></i>
+      <span class="text-sm font-medium">Logout</span>
+    </div>
+  </div>
+  
+
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 md:hidden"></div>
+
+
+
+    <!-- Sidebar -->
+    <div class="hidden md:fixed sm:fixed md:flex w-20 h-screen bg-white border-r flex-col items-center py-4 space-y-10">
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center mt-6">
+        <i class='bx bxs-book-reader text-4xl'></i>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-share-alt text-4xl'></i>
+        <span class="text-sm font-medium">Dashboard</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bxs-book text-4xl'></i>
+        <span class="text-sm font-medium">Borrow</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-group text-4xl'></i>
+        <span class="text-sm font-medium">Member</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-book-open text-4xl'></i>
+        <span class="text-sm font-medium">Resources</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-cog text-4xl'></i>
+        <span class="text-sm font-medium">Settings</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-log-out text-4xl'></i>
+        <span class="text-sm font-medium">Logout</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-4 md:p-10 md:ml-20">
+      <h1 class="text-3xl font-bold mb-6 hidden md:block">Welcome to DEF library</h1>
+
+      <!-- Responsive Layout -->
+      <div class="flex flex-col lg:flex-row justify-between gap-6">
+        <!-- Left Column -->
+        <div class="flex-1 space-y-6">
+          <!-- Library Settings -->
+          <div class="bg-white p-4 rounded-lg shadow w-full">
+            <h2 class="text-lg font-semibold mb-3">Library Settings</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div class="flex items-center gap-2">
+                <label class="text-sm font-medium w-40">Allowed Rental Units:</label>
+                <input type="text" class="border p-2 rounded w-full" placeholder="e.g. 3">
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="text-sm font-medium w-40">Overdue Fine:</label>
+                <input type="text" class="border p-2 rounded w-full" placeholder="e.g. $10">
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="text-sm font-medium w-40">Borrow Limit:</label>
+                <input type="text" class="border p-2 rounded w-full" placeholder="e.g. 5">
+              </div>
+            </div>
+            <div class="space-x-4">
+              <button class="bg-blue-900 text-white px-4 py-2 rounded">Save</button>
+              <button class="bg-gray-400 text-white px-4 py-2 rounded">Cancel</button>
+            </div>
+          </div>
+
+          <!-- Add Book -->
+          <div class="bg-white p-4 rounded-lg shadow w-full">
+            <h2 class="text-lg font-semibold mb-3">Add Reference Book</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div class="flex items-center gap-2">
+                <label class="text-sm font-medium w-24">Title:</label>
+                <input type="text" class="border p-2 rounded w-full" placeholder="Book Title">
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="text-sm font-medium w-24">Class No:</label>
+                <input type="text" class="border p-2 rounded w-full" placeholder="Class No">
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="text-sm font-medium w-24">Shelf Loc.:</label>
+                <input type="text" class="border p-2 rounded w-full" placeholder="Shelf location">
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="text-sm font-medium w-24">ISBN:</label>
+                <input type="text" class="border p-2 rounded w-full" placeholder="ISBN">
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="text-sm font-medium w-24">Author:</label>
+                <input type="text" class="border p-2 rounded w-full" placeholder="Author">
+              </div>
+            </div>
+            <div class="space-x-4">
+              <button class="bg-blue-900 text-white px-4 py-2 rounded">Add</button>
+              <button class="bg-gray-400 text-white px-4 py-2 rounded">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column (Image) -->
+        <div class="flex justify-center items-center w-full lg:w-[40%]">
+          <img id="blinkingImage" src="img/booksdd.png" alt="booksadd" class="max-h-[500px] w-auto animate-pulse-scale">
+        </div>
+      </div>
+
+      <!-- Reference List -->
+      <div class=" p-4 mt-10 ">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Reference lists</h2>
+            <select class="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option disabled selected>See more</option>
+              <option value="recent">Recently Added</option>
+              <option value="popular">Most Borrowed</option>
+              <option value="available">Available Only</option>
+              <option value="all">View All</option>
+            </select>
+          </div>
+          
+        <div class="overflow-x-auto">
+          <table class="min-w-full ">
+            <thead>
+              <tr class="bg-blue-900 text-white">
+                <th class="py-2 px-2 sm:px-4 border text-left">Class No</th>
+                <th class="py-2 px-2 sm:px-4 border text-left hidden sm:table-cell">ISBN</th>
+                <th class="py-2 px-2 sm:px-4 border text-left">Shelf</th>
+                <th class="py-2 px-2 sm:px-4 border text-left">Title</th>
+                <th class="py-2 px-2 sm:px-4 border text-left hidden md:table-cell">Author</th>
+                <th class="py-2 px-2 sm:px-4 border text-left">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t">
+                <td class="py-2 px-2 sm:px-4">001</td>
+                <td class="py-2 px-2 sm:px-4 hidden sm:table-cell">#279789</td>
+                <td class="py-2 px-2 sm:px-4">34</td>
+                <td class="py-2 px-2 sm:px-4">The psychology of money</td>
+                <td class="py-2 px-2 sm:px-4 hidden md:table-cell">Julia</td>
+                <td class="py-2 px-2 sm:px-4 space-x-2">
+                  <button class="text-blue-900">✏️</button>
+                  <button class="text-red-500">🗑️</button>
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-2 sm:px-4">002</td>
+                <td class="py-2 px-2 sm:px-4 hidden sm:table-cell">#279789</td>
+                <td class="py-2 px-2 sm:px-4">22</td>
+                <td class="py-2 px-2 sm:px-4">The sun and the flower</td>
+                <td class="py-2 px-2 sm:px-4 hidden md:table-cell">Angel</td>
+                <td class="py-2 px-2 sm:px-4 space-x-2">
+                  <button class="text-blue-900">✏️</button>
+                  <button class="text-red-500">🗑️</button>
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-2 sm:px-4">003</td>
+                <td class="py-2 px-2 sm:px-4 hidden sm:table-cell">#279789</td>
+                <td class="py-2 px-2 sm:px-4">50</td>
+                <td class="py-2 px-2 sm:px-4">La La Land</td>
+                <td class="py-2 px-2 sm:px-4 hidden md:table-cell">Rose</td>
+                <td class="py-2 px-2 sm:px-4 space-x-2">
+                  <button class="text-blue-900">✏️</button>
+                  <button class="text-red-500">🗑️</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-6 flex justify-between">
+          <button class="bg-gray-300 px-4 py-2 rounded">Skip</button>
+          <button class="bg-blue-900 text-white px-4 py-2 rounded">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const menuBtn = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("mobileSidebar");
+    const overlay = document.getElementById("overlay");
+
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("translate-x-full");
+      overlay.classList.toggle("hidden");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.add("translate-x-full");
+      overlay.classList.add("hidden");
+    });
+  </script>
+</body>
+</html>

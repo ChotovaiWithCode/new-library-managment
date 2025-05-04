@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body class="bg-blue-50 font-sans text-blue-900">
+
+     <!-- Mobile Header -->
+  <header class="md:hidden bg-white p-4 flex items-center justify-between border-b">
+    <h1 class="text-xl font-semibold">DEF Library</h1>
+    <button id="menuToggle" class="w-8 h-8  rounded">
+      <i class='bx bxs-book-reader text-4xl'></i>
+    </button>
+  </header>
+
+  <!-- Mobile Sidebar -->
+  <div id="mobileSidebar"
+    class="fixed top-0 right-0 h-full w-20 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden overflow-y-auto ">
+    <div class="p-2 flex flex-col items-center space-y-6 mt-10">
+      <i class='bx bxs-book-reader text-4xl'></i>
+      <i class='bx bx-share-alt text-4xl'></i>
+      <span class="text-sm font-medium">Dashboard</span>
+      <i class='bx bxs-book text-4xl'></i>
+      <span class="text-sm font-medium">Borrow</span>
+      <i class='bx bx-group text-4xl'></i>
+      <span class="text-sm font-medium">Member</span>
+      <i class='bx bx-book-open text-4xl'></i>
+      <span class="text-sm font-medium">Resources</span>
+      <i class='bx bx-cog text-4xl'></i>
+      <span class="text-sm font-medium">Settings</span>
+      <i class='bx bx-log-out text-4xl'></i>
+      <span class="text-sm font-medium">Logout</span>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 md:hidden"></div>
+
+  <div class="flex">
+    <!-- Sidebar (Desktop - Fixed) -->
+    <div class="hidden md:fixed sm:fixed md:flex w-20 h-screen bg-white border-r flex-col items-center py-4 space-y-10">
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center mt-6">
+        <i class='bx bxs-book-reader text-4xl'></i>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-share-alt text-4xl'></i>
+        <span class="text-sm font-medium">Dashboard</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bxs-book text-4xl'></i>
+        <span class="text-sm font-medium">Borrow</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-group text-4xl'></i>
+        <span class="text-sm font-medium">Member</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-book-open text-4xl'></i>
+        <span class="text-sm font-medium">Resources</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-cog text-4xl'></i>
+        <span class="text-sm font-medium">Settings</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-log-out text-4xl'></i>
+        <span class="text-sm font-medium">Logout</span>
+      </div>
+    </div>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 md:ml-20">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-center gap-6 p-4 md:ml-20">
+
+                <!-- Option Dropdown -->
+                <div class="flex items-center gap-2">
+                  <select id="option" class="border p-2 rounded">
+                    <option>All books</option>
+                    <option>Most borrowed</option>
+                    <option>Newest</option>
+                  </select>
+                </div>
+        
+                <!-- Member ID -->
+                <div class="flex items-center gap-2">
+                  <label for="memberId" class="text-sm font-medium">Keywords:</label>
+                  <input id="memberId" type="text" class="border p-2 rounded" placeholder="">
+                </div>
+        
+                <!-- Member Name -->
+                
+                  <input type="number" placeholder="Qty" class="border p-2 rounded w-20" />
+               
+        
+                <!-- Search Button -->
+                <button class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800">
+                  Search
+                </button>
+              </div>
+            <h1 class="text-3xl font-bold mb-6">Categories</h1>
+
+            <!-- Stats cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 mb-6">
+                <div class="bg-blue-900 rounded-xl shadow p-6 gap-3 flex items-center">
+                    <i class='bx bxs-book-open text-white text-6xl -rotate-45'></i>
+                    <i class='bx bxs-book-open text-white text-6xl rotate-45'></i>
+                    <p class="font-bold text-2xl text-white ">All book</p>
+
+                </div>
+                <div class="bg-orange-600 rounded-xl shadow p-6 gap-3 flex items-center">
+                    <i class='bx bxs-book-open text-white text-6xl -rotate-45'></i>
+                    <i class='bx bxs-book-open text-white text-6xl rotate-45'></i>
+                    <p class="font-bold text-2xl text-white ">Most borrower</p>
+
+                </div>
+                <div class="bg-blue-900 rounded-xl shadow p-6 gap-3 flex items-center">
+                    <i class='bx bxs-book-open text-white text-6xl -rotate-45'></i>
+                    <i class='bx bxs-book-open text-white text-6xl rotate-45'></i>
+                    <p class="font-bold text-2xl text-white ">Newest</p>
+
+                </div>
+
+            </div>
+            <h2 class="text-2xl font-semibold mb-6">All books</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Book Card -->
+                <div class=" gap-3  flex items-center justify-center">
+                    <div class="">
+                        <img src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg" alt="Book"
+                        class="h-48 mx-auto mb-4" />
+                    </div>
+                    <div class="">
+                        <p class="text-yellow-500  text-xl">★★★★★</p>
+                        <h3 class="font-semibold text-xl ">How Innovation Works</h3>
+                        <p class="font-semibold text-sm text-gray-400">Total Qty :<span>12</span></p>
+                        <p class="font-semibold text-sm text-gray-400">Available Qty :<span>10</span></p>
+                        
+                        <button class="block mt-2 bg-blue-700 text-white  px-4 py-1 rounded">Add to cart</button>
+                    </div>
+                </div>
+                
+                <div class=" gap-3  flex items-center justify-center">
+                    <div class="">
+                        <img src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg" alt="Book"
+                        class="h-48 mx-auto mb-4" />
+                    </div>
+                    <div class="">
+                        <p class="text-yellow-500  text-xl">★★★★★</p>
+                        <h3 class="font-semibold text-xl ">How Innovation Works</h3>
+                        <p class="font-semibold text-sm text-gray-400">Total Qty :<span>12</span></p>
+                        <p class="font-semibold text-sm text-gray-400">Available Qty :<span>10</span></p>
+                        <button class="block mt-2 bg-blue-700 text-white  px-4 py-1 rounded">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class=" gap-3  flex items-center justify-center">
+                    <div class="">
+                        <img src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg" alt="Book"
+                        class="h-48 mx-auto mb-4" />
+                    </div>
+                    <div class="">
+                        <p class="text-yellow-500  text-xl">★★★★★</p>
+                        <h3 class="font-semibold text-xl ">How Innovation Works</h3>
+                        <p class="font-semibold text-sm text-gray-400">Total Qty :<span>12</span></p>
+                        <p class="font-semibold text-sm text-gray-400">Available Qty :<span>10</span></p>
+                        <button class="block mt-2 bg-blue-700 text-white  px-4 py-1 rounded">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class=" gap-3  flex items-center justify-center">
+                    <div class="">
+                        <img src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg" alt="Book"
+                        class="h-48 mx-auto mb-4" />
+                    </div>
+                    <div class="">
+                        <p class="text-yellow-500  text-xl">★★★★★</p>
+                        <h3 class="font-semibold text-xl ">How Innovation Works</h3>
+                        <p class="font-semibold text-sm text-gray-400">Total Qty :<span>12</span></p>
+                        <p class="font-semibold text-sm text-gray-400">Available Qty :<span>10</span></p>
+                        <button class="block mt-2 bg-blue-700 text-white  px-4 py-1 rounded">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-6 space-x-2">
+                <button class="px-3 py-1 border rounded">&lt;</button>
+                <button class="px-3 py-1 border rounded bg-blue-700 text-white">1</button>
+                <button class="px-3 py-1 border rounded">2</button>
+                <button class="px-3 py-1 border rounded">3</button>
+                <button class="px-3 py-1 border rounded">&gt;</button>
+            </div>
+        </main>
+    </div>
+    <script>
+         // Mobile Sidebar Toggle
+        
+    const menuBtn = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("mobileSidebar");
+    const overlay = document.getElementById("overlay");
+
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("translate-x-full");
+      overlay.classList.toggle("hidden");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.add("translate-x-full");
+      overlay.classList.add("hidden");
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <! Sidebar -->
+  <!-- <div class="flex min-h-screen">
+    <aside class="w-64 bg-white shadow-md p-5">
+      <h2 class="text-2xl font-bold text-indigo-600 mb-8">ASPIRE LMS</h2>
+      <nav class="space-y-4">
+        <a href="#" class="block text-gray-700 hover:text-indigo-600">Dashboard</a>
+        <a href="#" class="block text-gray-700 hover:text-indigo-600">Resources</a>
+        <a href="#" class="block text-gray-700 hover:text-indigo-600">Manage Books</a>
+        <a href="#" class="block text-gray-700 hover:text-indigo-600">Reports</a>
+        <a href="#" class="block text-gray-700 hover:text-indigo-600">Lended Books</a>
+        <a href="#" class="block text-gray-700 hover:text-indigo-600">Members</a>
+        <a href="#" class="block text-gray-700 hover:text-indigo-600">Settings</a>
+        <a href="#" class="block text-gray-700 hover:text-indigo-600">Notifications</a>
+        <a href="#" class="block text-red-500 hover:text-red-700">Logout</a> -->
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <!-- <main class="flex-1 p-6"> -->
+      <!-- Topbar -->
+      <!-- <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-semibold">Welcome Admin</h1>
+        <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+          Add New Book
+        </button>
+      </div> -->
+
+      <!-- Info Cards -->
+      <!-- <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+        <div class="bg-yellow-100 p-4 rounded shadow">
+          <h2 class="text-xl font-bold">Total Books</h2>
+          <p class="text-2xl mt-2">2000</p>
+        </div>
+        <div class="bg-purple-100 p-4 rounded shadow">
+          <h2 class="text-xl font-bold">Lended Books</h2>
+          <p class="text-2xl mt-2">500</p>
+        </div>
+        <div class="bg-green-100 p-4 rounded shadow">
+          <h2 class="text-xl font-bold">Available Books</h2>
+          <p class="text-2xl mt-2">800</p>
+        </div>
+        <div class="bg-teal-100 p-4 rounded shadow">
+          <h2 class="text-xl font-bold">Total Users</h2>
+          <p class="text-2xl mt-2">500</p>
+        </div>
+        <div class="bg-pink-100 p-4 rounded shadow">
+          <h2 class="text-xl font-bold">Overdue Books</h2>
+          <p class="text-2xl mt-2">300</p>
+        </div>
+      </div> -->
+
+      <!-- Charts (Placeholders) -->
+      <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded shadow">
+          <h3 class="text-lg font-semibold mb-2">No of Visitors</h3>
+          <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-500">
+            [Bar Chart Placeholder]
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+          <h3 class="text-lg font-semibold mb-2">Books Allocation by Locations</h3>
+          <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-500">
+            [Pie Chart Placeholder]
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f4f6fb] min-h-screen flex items-center justify-center">
+
+  <div class="flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden max-w-4xl w-full">
+
+    <!-- Illustration Side -->
+    <div class="hidden md:flex items-center justify-center bg-indigo-50 w-1/2 p-8">
+      <img src="img/lb1.1.jpg" alt="Illustration" class="w-6/6 rounded-xl">
+    </div>
+
+    <!-- Form Side -->
+    <div class="w-full md:w-1/2 p-8 relative">
+      <!-- Background shapes -->
+      <div class="absolute inset-0 z-0">
+        <div class="w-60 h-60 bg-indigo-100 rounded-full absolute -top-20 -right-20"></div>
+        <div class="w-40 h-40 bg-indigo-200 rounded-full absolute -bottom-20 -left-10"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10">
+        <!-- Tabs -->
+        <div class="flex items-center space-x-6 mb-6">
+          <button id="signin-tab" class="text-xl font-bold text-indigo-900 border-b-2 border-indigo-900 pb-1">Sign in</button>
+          <button id="signup-tab" class="text-xl font-semibold text-gray-400 hover:text-indigo-600">Sign up</button>
+        </div>
+
+        <!-- Sign In Form -->
+        <form id="signin-form" class="space-y-4" action="desi.html" method="POST">
+          <div>
+            <label class="block text-gray-700 font-semibold">Email</label>
+            <input type="email" placeholder="Enter your email"
+              class="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300">
+          </div>
+          <div>
+            <label class="block text-gray-700 font-semibold">Password</label>
+            <input type="password" placeholder="Enter your password"
+              class="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300">
+          </div>
+          <div class="text-sm text-right text-indigo-500 cursor-pointer hover:underline">Forget password?</div>
+          <button type="submit"
+            class="w-full bg-indigo-900 text-white py-2 rounded-lg hover:bg-indigo-800 transition duration-200">
+            Sign in
+          </button>
+          <p class="text-sm text-center mt-4 text-gray-500">
+            Don’t have an account? <a href="#" id="goto-signup" class="text-indigo-600 hover:underline">Sign up</a>
+          </p>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signup-form" class="space-y-4 hidden" action="desi.html" method="POST">
+          <div>
+            <label class="block text-gray-700 font-semibold">Name</label>
+            <input type="text" placeholder="Your full name"
+              class="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300">
+          </div>
+          <div>
+            <label class="block text-gray-700 font-semibold">Email</label>
+            <input type="email" placeholder="Your email address"
+              class="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300">
+          </div>
+          <div>
+            <label class="block text-gray-700 font-semibold">Password</label>
+            <input type="password" placeholder="Create a password"
+              class="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300">
+          </div>
+          <button type="submit"
+            class="w-full bg-indigo-900 text-white py-2 rounded-lg hover:bg-indigo-800 transition duration-200">
+            Sign up
+          </button>
+          <p class="text-sm text-center mt-4 text-gray-500">
+            Already have an account? <a href="#" id="goto-signin" class="text-indigo-600 hover:underline">Sign in</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const signinTab = document.getElementById('signin-tab');
+    const signupTab = document.getElementById('signup-tab');
+    const signinForm = document.getElementById('signin-form');
+    const signupForm = document.getElementById('signup-form');
+    const gotoSignup = document.getElementById('goto-signup');
+    const gotoSignin = document.getElementById('goto-signin');
+
+    function activateTab(tab) {
+      if (tab === 'signin') {
+        signinTab.classList.add('font-bold', 'text-indigo-900', 'border-b-2', 'border-indigo-900');
+        signupTab.classList.remove('font-bold', 'text-indigo-900', 'border-b-2', 'border-indigo-900');
+        signupTab.classList.add('text-gray-400');
+        signinForm.classList.remove('hidden');
+        signupForm.classList.add('hidden');
+      } else {
+        signupTab.classList.add('font-bold', 'text-indigo-900', 'border-b-2', 'border-indigo-900');
+        signinTab.classList.remove('font-bold', 'text-indigo-900', 'border-b-2', 'border-indigo-900');
+        signinTab.classList.add('text-gray-400');
+        signupForm.classList.remove('hidden');
+        signinForm.classList.add('hidden');
+      }
+    }
+
+    signinTab.addEventListener('click', () => activateTab('signin'));
+    signupTab.addEventListener('click', () => activateTab('signup'));
+    gotoSignup.addEventListener('click', (e) => { e.preventDefault(); activateTab('signup'); });
+    gotoSignin.addEventListener('click', (e) => { e.preventDefault(); activateTab('signin'); });
+  </script>
+
+</body>
+</html>

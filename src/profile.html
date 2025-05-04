@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Member Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body class="bg-blue-50 font-sans text-blue-900">
+  <!-- Mobile Header -->
+  <header class="md:hidden bg-white p-4 flex items-center justify-between border-b">
+    <h1 class="text-xl font-semibold">DEF Library</h1>
+    <button id="menuToggle" class="w-8 h-8  rounded">
+      <i class='bx bxs-book-reader text-4xl'></i>
+    </button>
+  </header>
+
+  <!-- Mobile Sidebar -->
+  <div id="mobileSidebar"
+    class="fixed top-0 right-0 h-full w-20 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden overflow-y-auto ">
+    <div class="p-2 flex flex-col items-center space-y-6 mt-10">
+      <i class='bx bxs-book-reader text-4xl'></i>
+      <i class='bx bx-share-alt text-4xl'></i>
+      <span class="text-sm font-medium">Dashboard</span>
+      <i class='bx bxs-book text-4xl'></i>
+      <span class="text-sm font-medium">Borrow</span>
+      <i class='bx bx-group text-4xl'></i>
+      <span class="text-sm font-medium">Member</span>
+      <i class='bx bx-book-open text-4xl'></i>
+      <span class="text-sm font-medium">Resources</span>
+      <i class='bx bx-cog text-4xl'></i>
+      <span class="text-sm font-medium">Settings</span>
+      <i class='bx bx-log-out text-4xl'></i>
+      <span class="text-sm font-medium">Logout</span>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 md:hidden"></div>
+
+  <div class="flex">
+    <!-- Sidebar (Desktop - Fixed) -->
+    <div class="hidden md:fixed sm:fixed md:flex w-20 h-screen bg-white border-r flex-col items-center py-4 space-y-10">
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center mt-6">
+        <i class='bx bxs-book-reader text-4xl'></i>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-share-alt text-4xl'></i>
+        <span class="text-sm font-medium">Dashboard</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bxs-book text-4xl'></i>
+        <span class="text-sm font-medium">Borrow</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-group text-4xl'></i>
+        <span class="text-sm font-medium">Member</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-book-open text-4xl'></i>
+        <span class="text-sm font-medium">Resources</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-cog text-4xl'></i>
+        <span class="text-sm font-medium">Settings</span>
+      </div>
+      <div class="w-8 h-8 rounded flex flex-col items-center justify-center">
+        <i class='bx bx-log-out text-4xl'></i>
+        <span class="text-sm font-medium">Logout</span>
+      </div>
+    </div>
+
+    <!-- Main content wrapper (add left margin to avoid overlap with fixed sidebar) -->
+    <div class="flex-1 md:ml-20">
+
+      <div class="flex flex-col md:flex-row md:items-center md:justify-center gap-4 p-4 md:ml-20">
+
+        <!-- Option Dropdown -->
+        <div class="flex items-center gap-2">
+          <select id="option" class="border p-2 rounded">
+            <option>All</option>
+            <option>New Members</option>
+            <option>Active</option>
+            <option>Inactive</option>
+          </select>
+        </div>
+
+        <!-- Member ID -->
+        <div class="flex items-center gap-2">
+          <label for="memberId" class="text-sm font-medium">Member ID:</label>
+          <input id="memberId" type="text" class="border p-2 rounded" placeholder="e.g. 123456">
+        </div>
+
+        <!-- Member Name -->
+        <div class="flex items-center gap-2">
+          <label for="memberName" class="text-sm font-medium">Name:</label>
+          <input id="memberName" type="text" class="border p-2 rounded" placeholder="e.g. Julia">
+        </div>
+
+        <!-- Search Button -->
+        <button class="bg-blue-900 text-white px-4 sm:px-4 py-2 rounded hover:bg-blue-800">
+          Search
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <!-- Main Content -->
+  <div class="flex flex-col lg:flex-row flex-1 md:ml-20">
+
+
+    <!-- Member List -->
+    <!-- Member List -->
+    <div class=" sm:w-2/3 md:w-3/3 flex-1 p-4 mt-6">
+
+      <h2 class="text-2xl font-bold mb-4">All members</h2>
+      <div class="overflow-x-auto overflow-y-auto h-[80vh]">
+
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Repeatable row -->
+            <tr class="border-t bg-white border-r">
+              <td>#154784</td>
+              <td class="flex items-center space-x-2 py-1">
+                <img src="https://via.placeholder.com/24" class="rounded-full w-6 h-6" alt="profile">
+                <span>Julia</span>
+              </td>
+              <td><span class="text-green-500">new member</span></td>
+            </tr>
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </div>
+      <div class="flex justify-end">
+        <button class="mt-4 px-3 py-1 bg-blue-900 text-white rounded flex items-center gap-2 ">
+          See more
+          <i class='bx bx-right-arrow-alt'></i>
+        </button>
+      </div>
+
+    </div>
+
+
+    <!-- Member Form -->
+    <div class="flex-1 p-6 mt-6">
+      <div class="flex justify-between">
+        <h2 class="text-2xl font-bold mb-4">Member latest record</h2>
+        <p class="p-2 gap-6">✏️ 🗑️ 👁️</p>
+      </div>
+
+      <!-- Upload Area -->
+      <div
+        class="w-48 h-48 border-dashed border-2 border-gray-300 rounded-full flex items-center justify-center text-center mx-auto mb-6">
+        <p class="text-gray-500 text-sm">
+          Drop files to upload<br>
+          <a href="#" class="text-blue-500 underline">or browse</a>
+        </p>
+      </div>
+
+
+      <!-- Form Fields -->
+      <form class="grid grid-cols-1 gap-4 max-w-3xl space-y-4 mx-auto">
+
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-medium w-40">Member ID:</label>
+          <input type="text" class="border p-2 rounded w-full" placeholder="Enter your Member ID">
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-medium w-40">Name:</label>
+          <input type="text" class="border p-2 rounded w-full" placeholder="Enter your name">
+        </div>
+
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-medium w-40">Place:</label>
+          <input type="text" class="border p-2 rounded w-full" placeholder="Enter your place">
+        </div>
+
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-medium w-40">Phone:</label>
+          <input type="text" class="border p-2 rounded w-full" placeholder="Enter your phone">
+        </div>
+
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-medium w-40">Address:</label>
+          <input type="text" class="border p-2 rounded w-full" placeholder="Enter your address">
+        </div>
+
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-medium w-40">Email:</label>
+          <input type="text" class="border p-2 rounded w-full" placeholder="Enter your email">
+        </div>
+
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-medium w-40">Membership date:</label>
+          <input type="text" class="border p-2 rounded w-full" placeholder="Membership date">
+        </div>
+        <textarea class="border p-2 rounded" placeholder="Remark"></textarea>
+
+        <div class="flex justify-end">
+          <div class="flex space-x-4">
+            <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded">Add</button>
+            <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded">Cancel</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  </div>
+  <script>
+  // Mobile Sidebar Toggle
+        
+    const menuBtn = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("mobileSidebar");
+    const overlay = document.getElementById("overlay");
+
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("translate-x-full");
+      overlay.classList.toggle("hidden");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.add("translate-x-full");
+      overlay.classList.add("hidden");
+    });
+  </script>
+</body>
+
+</html>

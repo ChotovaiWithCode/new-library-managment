@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library Dashboard 2</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-blue-50 p-6 font-sans">
+
+  <!-- Borrowed rate and restricted members -->
+  <div class="grid grid-cols-3 gap-6 mb-8">
+    <!-- Borrowed Rate Chart -->
+    <div class="col-span-2 bg-white p-4 rounded-xl shadow">
+      <h2 class="text-lg font-semibold text-blue-900 mb-4">Borrowed rate</h2>
+      <canvas id="barChart" class="w-full h-64"></canvas>
+    </div>
+
+    <!-- Restricted Members -->
+    <div class="bg-white p-4 rounded-xl shadow">
+      <h2 class="text-lg font-semibold text-blue-900 mb-4">Restricted members</h2>
+      <table class="w-full text-left text-sm">
+        <thead class="text-gray-500">
+          <tr>
+            <th>Member ID</th>
+            <th>Member name</th>
+          </tr>
+        </thead>
+        <tbody class="text-blue-900">
+          <tr><td>906</td><td>Julia</td></tr>
+          <tr><td>592</td><td>Allison</td></tr>
+          <tr><td>147</td><td>Lily</td></tr>
+          <tr><td>906</td><td>Julia</td></tr>
+          <tr><td>592</td><td>Allison</td></tr>
+          <tr><td>147</td><td>Lily</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Recent Borrowed History -->
+  <div class="bg-white p-4 rounded-xl shadow">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-semibold text-blue-900">Recent borrowed history</h2>
+      <select class="border rounded p-1 text-sm">
+        <option>Latest</option>
+      </select>
+    </div>
+    <table class="w-full text-sm text-left">
+      <thead class="bg-blue-900 text-white">
+        <tr>
+          <th class="p-2">Book ID</th>
+          <th class="p-2">Title</th>
+          <th class="p-2">ISBN</th>
+          <th class="p-2">Name</th>
+          <th class="p-2">Borrowed date</th>
+          <th class="p-2">Status</th>
+          <th class="p-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="text-blue-900">
+        <!-- Row Template -->
+        <tr class="border-b">
+          <td class="p-2">#154784</td>
+          <td class="p-2">Psychology of money</td>
+          <td class="p-2">123</td>
+          <td class="p-2 flex items-center gap-2"><img src="https://i.pravatar.cc/20?u=1" class="rounded-full w-5 h-5"> Julia</td>
+          <td class="p-2">July 11,2022</td>
+          <td class="p-2"><span class="bg-red-100 text-red-600 px-2 py-1 rounded-full text-xs">overdue</span></td>
+          <td class="p-2 flex gap-2">
+            ✏️ 🗑️ 👁️
+          </td>
+        </tr>
+        <tr class="border-b">
+          <td class="p-2">#234787</td>
+          <td class="p-2">The sun and the flower</td>
+          <td class="p-2">821</td>
+          <td class="p-2 flex items-center gap-2"><img src="https://i.pravatar.cc/20?u=2" class="rounded-full w-5 h-5"> Angel</td>
+          <td class="p-2">July 10,2022</td>
+          <td class="p-2"><span class="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs">returned</span></td>
+          <td class="p-2 flex gap-2">✏️ 🗑️ 👁️</td>
+        </tr>
+        <!-- Repeat for other rows -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Chart JS -->
+  <script>
+    const barChart = new Chart(document.getElementById('barChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Science', 'Education', 'Horror', 'Romantic', 'Kids', 'Finance', 'Cooking', 'Travel', 'Magazine'],
+        datasets: [{
+          label: 'Borrowed Books',
+          data: [12, 19, 8, 24, 18, 20, 10, 23, 21],
+          backgroundColor: [
+            '#a5b4fc', '#fcd34d', '#f87171', '#fbbf24',
+            '#a78bfa', '#d9f99d', '#fcd9b0', '#fda4af', '#93c5fd'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
